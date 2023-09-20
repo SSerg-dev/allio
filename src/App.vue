@@ -8,6 +8,8 @@ import { RouterLink, RouterView } from 'vue-router'
   </header>
 
   <RouterView />
+
+  <a class="waves-effect waves-light  red lighten-1 btn">button</a>
 </template>
 
 <style scoped>

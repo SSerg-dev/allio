@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import "~normalize.css";
+@import "../../node_modules/normalize.css/normalize.css";
 
-@import "header";
 @import "card";
-@import "footer";
 @import "loader";
 
 * {
@@ -17,11 +15,3 @@ body {
   font-size: 12px;
 }
 
-.card {
-  position: relative;
-  color: #888;
-  height: 100%;
-  max-width: 100%;
-  font-size: .8rem;
-
-}

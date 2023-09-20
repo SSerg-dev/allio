@@ -1,101 +1,78 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
-.excel__table {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: $header-heigth + $toolbar-heigth + $formula-heigth;
-  overflow-x: auto;
-  padding-bottom: 2px;
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4vh;
+  
 
-  .row {
-    display: flex;
-    flex-direction: row;
-    min-height: 20px;
-    height: $row-heigth;
-  }
+  width: 270px;
+  height: 400px;
 
-  .row-info {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    min-width: $info-cell-width;
-    height: 100%;
-    border: 1px solid $border-color;
-    background: #f8f9fa;
+  padding: 24px, 16px, 24px, 16px;
+  border-radius: 20px;
+  border: 1px;
+  gap: 10px;
+}
 
-    border-top: none;
-  }
+.card__content {
+  border: solid 1px #ccc;
+  border-radius: 4%;
 
-  .row-data {
-    display: flex;
-    flex-direction: row;
-  }
-  .column {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: #f8f9fa;
-    min-width: 40px;
-    width: $cell-width;
-    border: 1px solid $border-color;
-    border-top: none;
-    border-left: none;
-    height: 100%;
-  }
+  width: 238px;
+  height: 362px;
+}
 
-  .cell {
-    min-width: 40px;
-    padding: 5px;
-    width: $cell-width;
-    height: 100%;
-    border: 1px solid #e2e3e3;
-    border-top: none;
-    border-left: none;
-    color: #111;
-    white-space: nowrap;
-    outline: none;
+.card__content__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    &.selected {
-      border: none;
-      outline: 2px solid $primary-color;
-      z-index: 2;
-    }
-  }
-  .col-resize, .row-resize {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: $primary-color;
-    opacity: 0;
-    z-index: 1000;
+  margin-top: 2vh;
 
-    &:hover {
-      opacity: 1!important;
-    }
-  }
+  width: 238px;
+  height: fit-content;
+}
+.card__content__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .col-resize {
-    top: 0;
-    width: 4px;
+  margin-top: 2vh;
+  margin-left: 0.65vw;
 
-    &:hover {
-      cursor: col-resize;
-    }
-  }
-  .row-resize {
-    left: 0;
-    height: 4px;
+  border: solid 1px #ccc;
+  border-radius: 4%;
 
-    &:hover {
-      cursor: row-resize;
-    }
+  width: 220px;
+  height: 256px;
+}
 
-  }
+.card__content__number {
 
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+
+  width: fit-content;
+  height: fit-content;
+
+  font-size: 2rem;
+}
+.card__content__image {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.card__content__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-top: 1.5vh;
+
+  width: 238px;
+  height: 42px;
 }

@@ -1,42 +1,44 @@
-<script setup lang="ts">
-import CardItem from "@/components/CardItem.vue";
-</script>
-
 <template>
   <div>
-    <div class="container">
-      <div class="item">
+    <div class="cards">
+
+      <!-- {{ cards }} -->
+
+      <!-- <div>
         <CardItem />
       </div>
 
-      <div class="item">
+      <div>
         <CardItem />
       </div>
 
-      <div class="item">
+      <div>
         <CardItem />
       </div>
 
-      <div class="item">
+      <div>
         <CardItem />
-      </div>
+      </div> -->
 
-      <div class="item">
-        <CardItem />
-      </div>
-
-      <div class="item">
-        <CardItem />
-      </div>
+      
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+import { useCard } from "../stores/card";
+import CardItem from "./CardItem.vue";
+
+const cards = useCard(); 
+console.log("🚀 ~ file: CardItems.vue:33 ~ cards:", cards)
+
+
+</script>
+
 <style scoped>
-.container {
+.cards {
   display: flex;
   flex-direction: row;
-
   align-items: center;
   justify-content: space-around;
 
@@ -45,9 +47,5 @@ import CardItem from "@/components/CardItem.vue";
 
   padding-top: 2vh;
 }
-item {
-  width: fit-content;
 
-  margin-bottom: 4vh;
-}
 </style>

@@ -1,4 +1,7 @@
 /* @import './base.css'; */
+@import '../../node_modules/materialize-css/dist/css/materialize.min.css';
+@import '../scss/index.scss';
+
 
 
 #app {
