@@ -1,0 +1,38 @@
+// ---------------------------------
+<script setup lang="ts">
+import { defineProps, defineEmits, ref, computed, onMounted } from 'vue'
+
+// Define props
+const props = defineProps<{
+  // Define your prop types here
+}>()
+
+// Define emits (for custom events)
+const emits = defineEmits()
+
+// Data properties
+const message = ref('Hello, Vue 3!')
+const count = ref(0)
+
+// Computed properties
+const computedMessage = computed(() => {
+  return `${message.value} (Count: ${count.value})`
+})
+
+// Lifecycle hook: onMounted
+onMounted(() => {
+  // Your initialization logic here
+})
+
+// Methods
+function incrementCount() {
+  count.value++
+}
+
+// Custom methods
+function customMethod() {
+  // Your custom logic here
+}
+
+</script>
+

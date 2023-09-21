@@ -1,51 +1,29 @@
 <template>
   <div>
     <div class="cards">
-
-      <!-- {{ cards }} -->
-
-      <!-- <div>
-        <CardItem />
-      </div>
-
-      <div>
-        <CardItem />
-      </div>
-
-      <div>
-        <CardItem />
-      </div>
-
-      <div>
-        <CardItem />
-      </div> -->
-
-      
+      <CardItem
+        v-for="(card, index) in cards.cards"
+        :order="index"
+        :card="card"
+        :key="card.building_id"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useCard } from "../stores/card";
 import CardItem from "./CardItem.vue";
+import { useCardStore } from "../stores/card";
 
-const cards = useCard(); 
-console.log("🚀 ~ file: CardItems.vue:33 ~ cards:", cards)
+import { defineComponent, defineProps, onMounted } from "vue";
+defineComponent({});
 
+const cards = useCardStore();
+// console.log("🚀 ~ file: CardItems.vue:23 ~ cards:", JSON.stringify(cards.cards[0].plan) )
 
+onMounted(() => {});
 </script>
 
 <style scoped>
-.cards {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-
-  width: fit-content;
-  flex-wrap: wrap;
-
-  padding-top: 2vh;
-}
 
 </style>
