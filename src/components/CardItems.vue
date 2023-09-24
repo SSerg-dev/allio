@@ -5,7 +5,7 @@
         v-for="(card, index) in cards.cards"
         :order="index"
         :card="card"
-        :key="card.building_id"
+        :key="card.id"
       />
     </div>
   </div>

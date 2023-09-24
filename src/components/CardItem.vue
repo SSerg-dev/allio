@@ -1,8 +1,7 @@
 <template>
-  <div class="card">
-    <div class="card__content"> 
+  <div v-if="isShow" class="card">
+    <div class="card__content">
       <div class="card__content__header">
-        <!-- <img src="../assets/images/header.svg" alt="header" /> -->
         <div class="card__content__header__item">
           {{ `${props.card.rooms} комната` }}
         </div>
@@ -56,15 +55,39 @@
 import { defineComponent, defineProps, ref, onMounted } from "vue";
 defineComponent({});
 
+import { useCardStore } from "../stores/card";
+
+const cards = useCardStore();
+const cardVisible = cards.cardVisible;
+
+let isShow = ref(true);
+
 const props = defineProps({
   card: {
     type: Object,
     required: true,
-    default: () => {},
+    default: () => {},  
   },
 });
 
-onMounted(() => {});
+onMounted(() => {
+  // console.log("🚀 ~ file: CardItem.vue:71 ~ onMounted ~ cardVisible:", cardVisible)
+  cardVisible.isRoom = true;
+  if (
+    cardVisible.isRoom &&
+    cardVisible.isFloor &&
+    cardVisible.isSquare &&
+    cardVisible.isCost
+  ) {
+    isShow.value = true;
+  } else {
+    isShow.value = false;
+  }
+});
 </script>
 
-<style scoped></style>
+<style scoped>
+.card:hover {
+  border: solid 1px red;
+}
+</style>

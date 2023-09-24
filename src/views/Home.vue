@@ -1,22 +1,20 @@
 <template>
-  <main >
+  <main>
+    <!-- <Select /> -->
     <CardItems />
   </main>
 </template>
 
 <script setup lang="ts">
-import CardItems from '@/components/CardItems.vue';
-
-
+import CardItems from "../components/CardItems.vue";
+import Select from "../components/Select.vue";
 </script>
 
 <style scoped>
-  main {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
-    /* background: yellowgreen; */
-  }
+main {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
 </style>
-
