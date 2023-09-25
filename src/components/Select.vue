@@ -184,12 +184,12 @@ function intersectionFilterCards() {
     cards.setFilterCards(result);
     cards.cards = [...result];
 
-    return result;
+    return result; 
   } else return;
 }
 
 function filterRooms(rooms: string, amount: number) {
-  const result = cards.cards.filter((c) => c.rooms === amount);
+  const result = cards.cards.filter((c) => c.rooms <= amount);
   if (result.length > 0) {
     cards.setFilterRooms(result);
     intersectionFilterCards();
