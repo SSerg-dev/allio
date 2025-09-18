@@ -44,7 +44,9 @@
 
         <!--  -->
       </div>
-      <a class="waves-effect waves-light red lighten-1 btn card__content_button"
+      <a
+        class="waves-effect waves-light red lighten-1 btn card__content_button"
+        @click="pushRoute('order')"
         >Забронировать</a
       >
     </div>
@@ -53,6 +55,7 @@
 
 <script setup lang="ts">
 import { defineComponent, defineProps, ref, onMounted } from "vue";
+import router from "../router";
 defineComponent({});
 
 import { useCardStore } from "../stores/card";
@@ -60,13 +63,18 @@ import { useCardStore } from "../stores/card";
 const cards = useCardStore();
 const cardVisible = cards.cardVisible;
 
+// methods
+function pushRoute(route: string) {
+  router.push(route);
+}
+
 let isShow = ref(true);
 
 const props = defineProps({
   card: {
     type: Object,
     required: true,
-    default: () => {},  
+    default: () => {},
   },
 });
 
@@ -87,7 +95,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.card:hover {
+
+.card:hover{
   border: solid 1px red;
-}
+} 
+
 </style>
