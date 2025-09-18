@@ -128,10 +128,6 @@ let maxSquare = ref(0);
 let minCost = ref(0);
 let maxCost = ref(0);
 
-<<<<<<< HEAD
-// Methods
-=======
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
 // methods
 function resetHandler() {
   window.location.reload();
@@ -163,10 +159,6 @@ function intersectionFilterCards() {
   const price = cards.getFilterPrice;
 
   // all cards
-<<<<<<< HEAD
-  const native = cards.getNativeCards;
-  let result = [...native]; //cards.cards;
-=======
   let native;
   if (cards.getFilterCards.length > 0) {
     native = cards.getFilterCards;
@@ -174,7 +166,6 @@ function intersectionFilterCards() {
     native = cards.getNativeCards;
   }
   let result = [...native];
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
 
   if (rooms.length > 0 && result.length > 0) {
     result = result.filter((c: any) => rooms.includes(c));
@@ -191,36 +182,18 @@ function intersectionFilterCards() {
 
   if (result.length > 0) {
     cards.setFilterCards(result);
-<<<<<<< HEAD
-
-    const _cards = cards.getFilterCards;
-
-    console.log(
-      "🚀 ~ file: Select.vue:183 ~ intersectionFilterCards ~ cards.cards:",
-      cards.cards
-    );
-    cards.cards = [...result];
-
-    return result;
-=======
     cards.cards = [...result];
 
     return result; 
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
   } else return;
 }
 
 function filterRooms(rooms: string, amount: number) {
-<<<<<<< HEAD
+  // $$
+  // const result = cards.cards.filter((c) => c.rooms <= amount);
   const result = cards.cards.filter((c) => c.rooms === amount);
   if (result.length > 0) {
     cards.setFilterRooms(result);
-    // const rooms = cards.getFilterRooms;
-=======
-  const result = cards.cards.filter((c) => c.rooms <= amount);
-  if (result.length > 0) {
-    cards.setFilterRooms(result);
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
     intersectionFilterCards();
 
     return result;
@@ -233,10 +206,6 @@ function filterFloor(floor: string) {
   );
   if (result.length > 0) {
     cards.setFilterFloor(result);
-<<<<<<< HEAD
-    // const floor = cards.getFilterFloor;
-=======
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
     intersectionFilterCards();
 
     return result;
@@ -249,10 +218,6 @@ function filterSquare(square: string) {
   );
   if (result.length > 0) {
     cards.setFilterSquare(result);
-<<<<<<< HEAD
-    // const square = cards.getFilterSquare;
-=======
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
     intersectionFilterCards();
 
     return result;
@@ -266,10 +231,6 @@ function filterPrice(price: string) {
   );
   if (result.length > 0) {
     cards.setFilterPrice(result);
-<<<<<<< HEAD
-    // const price = cards.getFilterPrice;
-=======
->>>>>>> 163f5a8aae377b95d783178750e9b5c62bfd7216
     intersectionFilterCards();
 
     return result;
@@ -353,4 +314,18 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.select {
+  @media screen and (max-width: 960px) { 
+    margin-top: 0;
+    margin-right: 0;
+    display: block;
+  }
+}
+.select__content__header {
+  @media screen and (max-width: 960px) { 
+    display: none;
+  }
+}
+
+</style>
