@@ -1,6 +1,6 @@
 <template>
   <main>
-    <!-- <Select /> -->
+    <Select />
     <CardItems />
   </main>
 </template>

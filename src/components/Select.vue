@@ -11,22 +11,22 @@
           <div>
             <a
               class="waves-effect waves-red white btn select__content__room__button"
-              @click="updateCards('rooms', 1)"
+              @click="filterCards('rooms', 1)"
               >1</a
             >
             <a
               class="waves-effect waves-red white btn select__content__room__button"
-              @click="updateCards('rooms', 2)"
+              @click="filterCards('rooms', 2)"
               >2</a
             >
             <a
               class="waves-effect waves-red white btn select__content__room__button"
-              @click="updateCards('rooms', 3)"
+              @click="filterCards('rooms', 3)"
               >3</a
             >
             <a
               class="waves-effect waves-red white btn select__content__room__button"
-              @click="updateCards('rooms', 4)"
+              @click="filterCards('rooms', 4)"
               >4+</a
             >
           </div>
@@ -101,6 +101,7 @@
       <div class="select__content__filter"></div>
       <a
         class="red-text waves-effect waves-red white lighten-1 btn select__content__find__reset"
+        @click="resetHandler"
         >Сбросить</a
       >
     </div>
@@ -128,58 +129,104 @@ let minCost = ref(0);
 let maxCost = ref(0);
 
 // Methods
-function updateCards(type: string, amount: number) {
+// methods
+function resetHandler() {
+  window.location.reload();
+}
+
+function filterCards(type: string, amount: number) {
   switch (type) {
     case "rooms":
-    filterRooms("rooms", amount);
+      filterRooms("rooms", amount);
       break;
     case "floor":
-    filterFloor("floor");
+      filterFloor("floor");
       break;
     case "square":
-    filterSquare("square");
+      filterSquare("square");
       break;
     case "price":
-    filterPrice("price");
+      filterPrice("price");
       break;
 
     default:
       break;
   }
-  
+}
+function intersectionFilterCards() {
+  const rooms = cards.getFilterRooms;
+  const floor = cards.getFilterFloor;
+  const square = cards.getFilterSquare;
+  const price = cards.getFilterPrice;
+
+  // all cards
+  const native = cards.getNativeCards;
+  let result = [...native]; //cards.cards;
+
+  if (rooms.length > 0 && result.length > 0) {
+    result = result.filter((c: any) => rooms.includes(c));
+  }
+  if (floor.length > 0 && result.length > 0) {
+    result = result.filter((c: any) => floor.includes(c));
+  }
+  if (square.length > 0 && result.length > 0) {
+    result = result.filter((c: any) => square.includes(c));
+  }
+  if (price.length > 0 && result.length > 0) {
+    result = result.filter((c: any) => price.includes(c));
+  }
+
+  if (result.length > 0) {
+    cards.setFilterCards(result);
+
+    const _cards = cards.getFilterCards;
+
+    console.log(
+      "🚀 ~ file: Select.vue:183 ~ intersectionFilterCards ~ cards.cards:",
+      cards.cards
+    );
+    cards.cards = [...result];
+
+    return result;
+  } else return;
 }
 
 function filterRooms(rooms: string, amount: number) {
-  const result = cards.cards.filter((c) => c.rooms >= amount);
+  const result = cards.cards.filter((c) => c.rooms === amount);
   if (result.length > 0) {
-    // console.log("🚀 ~ file: Select.vue:154 ~ filterRooms ~ result:", result)
-    // todo set visible
-    // todo updateStore
-    return result
+    cards.setFilterRooms(result);
+    // const rooms = cards.getFilterRooms;
+    intersectionFilterCards();
+
+    return result;
   }
-  return
+  return;
 }
 function filterFloor(floor: string) {
   const result = cards.cards.filter(
     (c) => c.floor >= +minFloor.value && c.floor <= +maxFloor.value
   );
   if (result.length > 0) {
-    // console.log("🚀 ~ file: Select.vue:154 ~ filterFloor ~ result:", result)
-    // todo set visible
-    return result
+    cards.setFilterFloor(result);
+    // const floor = cards.getFilterFloor;
+    intersectionFilterCards();
+
+    return result;
   }
-  return
+  return;
 }
 function filterSquare(square: string) {
   const result = cards.cards.filter(
     (c) => c.square >= +minSquare.value && c.square <= +maxSquare.value
   );
   if (result.length > 0) {
-    // console.log("🚀 ~ file: Select.vue:154 ~ filterSquare ~ result:", result)
-    // todo set visible
-    return result
+    cards.setFilterSquare(result);
+    // const square = cards.getFilterSquare;
+    intersectionFilterCards();
+
+    return result;
   }
-  return
+  return;
 }
 function filterPrice(price: string) {
   const result = cards.cards.filter(
@@ -187,11 +234,13 @@ function filterPrice(price: string) {
       c.price / 1000000 >= +minCost.value && c.price / 1000000 <= +maxCost.value
   );
   if (result.length > 0) {
-    // console.log("🚀 ~ file: Select.vue:154 ~ filterPrice ~ result:", result)
-    // todo set visible
-    return result
+    cards.setFilterPrice(result);
+    // const price = cards.getFilterPrice;
+    intersectionFilterCards();
+
+    return result;
   }
-  return
+  return;
 }
 
 function createFloorSlider() {
@@ -213,7 +262,7 @@ function createFloorSlider() {
     minFloor.value = +values[0];
     maxFloor.value = +values[1];
     const type = "floor";
-    updateCards(type, 0);
+    filterCards(type, 0);
   });
 }
 
@@ -236,7 +285,7 @@ function createSquareSlider() {
     minSquare.value = +values[0];
     maxSquare.value = +values[1];
     const type = "square";
-    updateCards(type, 0);
+    filterCards(type, 0);
   });
 }
 
@@ -259,7 +308,7 @@ function createCostSlider() {
     minCost.value = +values[0];
     maxCost.value = +values[1];
     const type = "price";
-    updateCards(type, 0);
+    filterCards(type, 0);
   });
 }
 

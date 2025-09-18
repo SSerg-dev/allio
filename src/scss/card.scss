@@ -19,10 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4vh;
+  // margin-bottom: 4vh;
 
   width: 270px;
-  height: 480px;
+  height: 500px;
 
   padding: 24px, 16px, 24px, 16px;
   border-radius: 20px;
@@ -36,7 +36,7 @@
   margin-bottom: 2rem;
 
   width: $card-content-width;
-  height: 400px;
+  height: 450px;
 }
 .card__content_button {
   margin-left: 1.2rem;
